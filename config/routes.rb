@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:new, :create, :destroys]
   resources :restaurants
   resources :users, only: [:new, :create]
 
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
   # get 'users/index'
   # get 'users/show'
   # get 'users/new'
