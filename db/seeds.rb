@@ -7,6 +7,21 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(
-  email: "bob@gmail.com", 
+  email: "bob@gmail.com",
   password_digest: "abcd1234"
   )
+
+Restaurant.create(
+  name: "Benihana",
+  address: "123 Benny St.",
+  phone_number: "416-413-2222",
+  cuisine_type: "Japanese"
+)
+Reservation.create(
+  # date: "2016-11-25",
+  date: Date.new(2016, 11, 25), 
+  time: "18:00:00",
+  party_size: 2,
+  user_id: 1,
+  restaurant_id: 1
+)
