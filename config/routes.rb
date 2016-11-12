@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
+  resources :restaurants
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
 
   resources :restaurants do
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :show, :create, :destroy]
   end
 
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :restaurants
-  resources :users, only: [:new, :create]
 
   # get 'reservations/show'
   # get 'reservations/new'
