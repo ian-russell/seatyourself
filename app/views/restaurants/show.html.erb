@@ -5,8 +5,11 @@
       Cuisine: <%= @restaurant.cuisine_type %></p>
 </div>
 
-
-
 <button>
 <h3><%= link_to "Make a Reservation", new_restaurant_reservation_path(@restaurant) %></h3>
+</button>
+<br>
+<br>
+<button>
+<h3><%= link_to "Back to Restaurants", restaurants_path %></h3>
 </button>
