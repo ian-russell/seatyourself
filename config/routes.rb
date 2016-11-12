@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [:index, :show, :destroy]
 
+  resources :reservations, only: [:index, :show, :destroy]
+
   resources :restaurants do
     resources :reservations, only: [:new, :show, :create, :destroy]
   end
