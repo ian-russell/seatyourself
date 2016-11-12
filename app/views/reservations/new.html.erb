@@ -1,12 +1,5 @@
-
 <h3>New Reservation</h3>
 
 <%= "#{current_user.email} is creating a reservation at #{@restaurant.name}" %><br />
 
-<%= "The reservations controller created the following object #{@reservation}" %><br />
-
-<% if @reservation.id == nil %>
-  <p> Reservation object has no id</p>
-<% else %>
-  <%= @reservation.id %><br />
-<% end %>
+<%= render 'form' %>

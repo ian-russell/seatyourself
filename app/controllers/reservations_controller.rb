@@ -15,14 +15,6 @@ class ReservationsController < ApplicationController
 
     @reservation.user = current_user
 
-    # @reservation = Reservation.new(
-    #   date: params[:reservation][:date],
-    #   time: params[:reservation][:time],
-    #   party_size: params[:reservation][:party_size],
-    #   restaurant_id: @restaurant.id,
-    #   user_id: current_user.id,
-    # )
-
     if @reservation.save
       redirect_to restaurants_url
     else
