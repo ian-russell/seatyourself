@@ -1,7 +1,10 @@
 <% if current_user %>
+<h1>Restaurants available to take reservations:</h1>
   <% @restaurants.each do |restaurant| %>
-    <p><%= restaurant.name %></p>
+    <button>
+      <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
+  </button>
   <% end %>
 <% else %>
-  <p>Welcome to Seat Yourself.  Please log in or sign up above.</p>
+  <h1>Welcome to Seat Yourself</h1>
 <% end %>
