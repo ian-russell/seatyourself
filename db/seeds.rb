@@ -6,10 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(
-  email: "bob@gmail.com",
-  password_digest: "abcd1234"
-  )
 
 Restaurant.create(
   name: "Benihana",
@@ -37,7 +33,6 @@ Restaurant.create(
   phone_number: "416-444-4444",
   cuisine_type: "Canadian"
 )
-
 
 Reservation.create(
   # date: "2016-11-25",
