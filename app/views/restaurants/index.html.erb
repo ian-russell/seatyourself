@@ -1,7 +1,7 @@
-<h1>Restaurants#index</h1>
-
-<% @restaurants.each do |restaurant| %>
-  <p><%= restaurant.name %></p>
+<% if current_user %>
+  <% @restaurants.each do |restaurant| %>
+    <p><%= restaurant.name %></p>
+  <% end %>
+<% else %>
+  <p>Welcome to Seat Yourself.  Please log in or sign up above.</p>
 <% end %>
-
-<p>Find me in app/views/restaurants/index.html.erb</p>
