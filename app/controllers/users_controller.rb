@@ -18,6 +18,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    unless current_user == @user
+      flash[:notice] = "Wrong ID"
+      redirect_to restaurants_url
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
