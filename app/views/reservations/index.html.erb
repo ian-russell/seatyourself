@@ -1,0 +1,9 @@
+<h1>Your Reservations</h1>
+
+<% @reservations.where('user_id' => current_user.id).each do |r| %>
+  <p>Restaurant: <%= @restaurants.find(r.restaurant_id).name %></p>
+  <p>Date: <%= r.date %></p>
+  <p>Time: <%= r.time %></p>
+  <p>Party Size: <%= r.party_size %></p>
+  <%= link_to 'Cancel' %>
+<% end %>
