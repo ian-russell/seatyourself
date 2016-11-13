@@ -1,7 +1,7 @@
-<% if @reservations.where('user_id' => current_user.id).count == 1 %>
-<h1>You Have <%= @reservations.where('user_id' => current_user.id).count %> Reservation</h1>
+<% if user_reservation_count == 1 %>
+<h1>You Have <%= user_reservation_count %> Reservation</h1>
 <% else %>
-<h1>You Have <%= @reservations.where('user_id' => current_user.id).count %> Reservations</h1>
+<h1>You Have <%= user_reservation_count %> Reservations</h1>
 <% end %>
 
 <% @reservations.where('user_id' => current_user.id).each do |r| %>

@@ -12,7 +12,7 @@
   <% if current_user %>
     Signed in as <%= current_user.email %>
     |  <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
-    |  <%= link_to "Main Page", restaurants_path %>
+    |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
     |  <%= link_to "Account Details", user_path(current_user) %>
     |  <%= link_to "Log Out", session_path("current_user"), :method => :delete %>
   <% else %>

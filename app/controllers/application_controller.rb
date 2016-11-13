@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     @reservations.where('user_id' => current_user.id).count
   end
 
-  helper_method :current_user, :user_reservation_count
+  def restaurant_count
+    Restaurant.all.count
+  end
+
+  helper_method :current_user, :user_reservation_count, :restaurant_count
 
 end
