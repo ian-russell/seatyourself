@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-  before_action :load_restaurant, except: :index
+  before_action :load_restaurant, except: [:index, :destroy]
 
   def index
     @reservations = Reservation.all
@@ -18,7 +18,6 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = @restaurant.reservations.build(reservation_params)
-
     @reservation.user = current_user
 
     if @reservation.save
@@ -30,6 +29,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.delete
+      redirect_to reservations_path(current_user)
   end
 
   private
