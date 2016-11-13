@@ -9,5 +9,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user
+  def user_reservation_count
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @reservations = Reservation.all
+    @reservations.where('user_id' => current_user.id).count
+  end
+
+  helper_method :current_user, :user_reservation_count
+
 end

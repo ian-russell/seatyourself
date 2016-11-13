@@ -5,6 +5,7 @@
 <% end %>
 
 <% @reservations.where('user_id' => current_user.id).each do |r| %>
+  <div class="reso_box">
   <h2><%= @restaurants.find(r.restaurant_id).name %></h2>
   <p>Date: <%= r.date %></p>
   <p>Time: <%= r.time.strftime("%I:%M:%p") %></p>
@@ -12,4 +13,5 @@
   <button>
   <%= link_to 'Cancel', "/reservations/#{r.id}", method: :delete %>
   </button>
+  </div>
 <% end %>
