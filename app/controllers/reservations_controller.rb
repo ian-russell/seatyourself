@@ -1,6 +1,12 @@
 class ReservationsController < ApplicationController
 
-  before_action :load_restaurant
+  before_action :load_restaurant, except: :index
+
+  def index
+    @reservations = Reservation.all
+    @restaurants = Restaurant.all
+    render 'index'
+  end
 
   def show
     @reservation = Reservation.find(params[:id])
