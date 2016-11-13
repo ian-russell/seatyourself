@@ -6,3 +6,20 @@
 <div>
   <button><%= link_to "Edit account details", edit_user_path(current_user) %> </button>
 </div>
+
+<% current_user.reservations.each do |reservation| %>
+   <p>
+
+     <div class="reservation_show">
+      Restaurant: <%= reservation.restaurant_id %><br>
+      Party Size: <%= reservation.party_size %><br>
+
+
+     </div>
+
+     <div class="reservation_show">
+       On <%= reservation.date %> at <%= reservation.time.strftime("%I:%M:%p") %>
+
+     </div>
+   </p>
+  <% end %>
