@@ -15,8 +15,8 @@
 
 <p class="userinfo">
   <% if current_user %>
-    Signed in as <%= current_user.email %>
-    |  <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
+    Signed in as <%= current_user.email %><br /><br />
+    <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
     |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
     |  <%= link_to "Account Details", user_path(current_user) %>
     |  <%= link_to "Log Out", session_path("current_user"), :method => :delete %>
