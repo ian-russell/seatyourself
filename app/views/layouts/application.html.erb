@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <p class="userinfo">
   <% if current_user %>
     Signed in as <%= current_user.email %>
@@ -19,6 +20,10 @@
     <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
     |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
   <% end %>
+
+  <% if flash[:alert] %>
+        <p id="alert"><%= flash[:alert] %></p>
+      <% end %>
 </p>
 
 <%= yield %>

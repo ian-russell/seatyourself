@@ -21,8 +21,9 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to restaurants_url
+      redirect_to reservations_path
     else
+      flash.now[:alert] = "You will need to select a party size to book your reservation"
       render 'restaurants/show'
     end
 
