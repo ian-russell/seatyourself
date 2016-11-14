@@ -1,5 +1,10 @@
 <% if current_user %>
 <h1>Restaurants available to take reservations:</h1>
+
+  <% @restaurants.select("cuisine_type").group("cuisine_type").each do |r| %>
+    <%= r.cuisine_type %>
+  <% end %>
+
   <% @restaurants.each do |restaurant| %>
     <button>
       <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
