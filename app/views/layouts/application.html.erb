@@ -12,23 +12,24 @@
 </head>
 <body>
 
+<div data-role="main" class="ui-content">
+  <p class="userinfo">
+    <% if current_user %>
+      Signed in as <%= current_user.email %><br /><br />
+      <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
+      |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
+      |  <%= link_to "Account Details", user_path(current_user) %>
+      |  <%= link_to "Log Out", session_path("current_user"), :method => :delete %>
+    <% else %>
+      <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+      |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
+    <% end %>
 
-<p class="userinfo">
-  <% if current_user %>
-    Signed in as <%= current_user.email %><br /><br />
-    <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
-    |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
-    |  <%= link_to "Account Details", user_path(current_user) %>
-    |  <%= link_to "Log Out", session_path("current_user"), :method => :delete %>
-  <% else %>
-    <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-    |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
-  <% end %>
-
-  <% if flash[:alert] %>
-        <p id="alert"><%= flash[:alert] %></p>
-      <% end %>
-</p>
+    <% if flash[:alert] %>
+          <p id="alert"><%= flash[:alert] %></p>
+        <% end %>
+  </p>
+</div>
 
 <%= yield %>
 
