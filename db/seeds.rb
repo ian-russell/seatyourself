@@ -22,6 +22,13 @@ Restaurant.create(
 )
 
 Restaurant.create(
+  name: "Mama's Pasta",
+  address: "565 Main St.",
+  phone_number: "416-874-7474",
+  cuisine_type: "Italian"
+)
+
+Restaurant.create(
   name: "Tom Jones Steakhouse",
   address: "565 Tom Jones St.",
   phone_number: "416-667-4648",
@@ -35,7 +42,6 @@ Restaurant.create(
 )
 
 Reservation.create(
-  # date: "2016-11-25",
   date: Date.new(2016, 11, 25),
   time: "18:00:00",
   party_size: 2,
