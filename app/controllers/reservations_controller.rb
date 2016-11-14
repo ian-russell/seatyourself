@@ -23,8 +23,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to reservations_path
     else
-      flash.now[:alert] = "You will need to select a party size to book your reservation"
-      render 'restaurants/show'
+      render 'new'
     end
 
   end
