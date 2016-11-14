@@ -3,6 +3,6 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :restaurants, through: :reservations
 
-  validates :email, :password, :password_confirmation, presence: true
+  validates :email, :password, :firstname, :lastname, :password_confirmation, presence: true
 
 end
