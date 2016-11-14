@@ -1,5 +1,5 @@
-<h3>New Reservation</h3>
+<h3>New Reservation at <em><%= @restaurant.name %></em></h3>
 
-<%= "#{current_user.email} is creating a reservation at #{@restaurant.name}" %><br />
+<%= "#{current_user.email}, input your reservation details below:" %><br /><br />
 
 <%= render 'form' %>
