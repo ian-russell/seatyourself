@@ -4,29 +4,69 @@
   <title>Seatyourself</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">>
+<div class="container">
+
+<div data-role="main" class="ui-content">
+  <p class="userinfo">
+
+    <% if current_user %>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href=" ">Seat Yourself</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active">
+          <li><%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %></li>
+          <li><%= link_to "Restaurants (#{restaurant_count})", restaurants_path %></li>
+          <li><%= link_to "Account Details", user_path(current_user) %></li>
+          <li> <%= link_to "Log Out", session_path("current_user"), :method => :delete %></li>
+
+        </ul>
+      </div>
+    </nav>
+      Signed in as <%= current_user.email %><br /><br />
+
+    <% else %>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href=" ">Seat Yourself</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active">
+          <li><%= link_to "Log in", new_session_path %></li>
+          <li><%= link_to "Sign up", new_user_path %></li>
+          <li><%= link_to "Restaurants (#{restaurant_count})", restaurants_path %></li>
+        </ul>
+      </div>
+    </nav>
+    <% end %>
 
 
-<p class="userinfo">
-  <% if current_user %>
-    Signed in as <%= current_user.email %>
-    |  <%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %>
-    |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
-    |  <%= link_to "Account Details", user_path(current_user) %>
-    |  <%= link_to "Log Out", session_path("current_user"), :method => :delete %>
-  <% else %>
-    <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-    |  <%= link_to "Restaurants (#{restaurant_count})", restaurants_path %>
-  <% end %>
+    <% if flash[:alert] %>
+          <p id="alert"><%= flash[:alert] %></p>
+        <% end %>
 
-  <% if flash[:alert] %>
-        <p id="alert"><%= flash[:alert] %></p>
-      <% end %>
-</p>
+  </p>
+</div>
 
-<%= yield %>
-
+<div data-role="main" class="ui-content">
+  <%= yield %>
+</div>
+</div>
 </body>
 </html>
