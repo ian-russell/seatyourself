@@ -5,4 +5,8 @@ class User < ApplicationRecord
 
   validates :email, :password, :firstname, :lastname, :password_confirmation, presence: true
 
+  def user_full_name
+    "#{firstname} #{lastname}"
+  end
+
 end
