@@ -7,7 +7,7 @@ class Reservation < ApplicationRecord
   validates :party_size, numericality: {only_integer: true}, presence: true
 
   def date_cannot_be_in_the_past
-    if date.present? && date <= Date.today
+    if date.present? && date < Date.today
       errors.add(:date, "Can't be in the past")
     end
   end
