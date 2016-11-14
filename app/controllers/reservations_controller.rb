@@ -21,7 +21,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to restaurants_url
+      redirect_to reservations_path
     else
       render 'restaurants/show'
     end
