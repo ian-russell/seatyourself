@@ -1,16 +1,15 @@
 <% if current_user %>
-<h1>Restaurants available to take reservations:</h1>
-
-  <% @restaurants.select("cuisine_type").group("cuisine_type").each do |r| %>
-    <h2><%= r.cuisine_type %></h2>
-      <% @restaurants.where('cuisine_type' => r.cuisine_type).each do |restaurant| %>
-      <button>
-        <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
-      </button>
-      <% end %>
-
-  <% end %>
-
+  <h1>Restaurants available to take reservations:</h1>
 <% else %>
   <h1>Welcome to Seat Yourself</h1>
+  <h2>Log in or Sign Up to Make a Reservation</h2>
+<% end %>
+
+<% @restaurants.select("cuisine_type").group("cuisine_type").each do |r| %>
+  <h3><%= r.cuisine_type %></h3>
+  <% @restaurants.where('cuisine_type' => r.cuisine_type).each do |restaurant| %>
+  <button>
+    <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+  </button>
+  <% end %>
 <% end %>
