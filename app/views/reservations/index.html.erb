@@ -1,17 +1,18 @@
-<% if user_reservation_count == 1 %>
-<h1>You Have <%= user_reservation_count %> Reservation</h1>
-<% else %>
-<h1>You Have <%= user_reservation_count %> Reservations</h1>
-<% end %>
 
-<% @reservations.where('user_id' => current_user.id).each do |r| %>
-  <div class="reso_box">
-  <h2><%= @restaurants.find(r.restaurant_id).name %></h2>
-  <p>Date: <%= r.date %></p>
-  <p>Time: <%= r.time.strftime("%I:%M:%p") %></p>
-  <p>Party Size: <%= r.party_size %></p>
-  <button>
-  <%= link_to 'Cancel', "/reservations/#{r.id}", method: :delete %>
-  </button>
-  </div>
-<% end %>
+  <% if user_reservation_count == 1 %>
+  <h1>You Have <%= user_reservation_count %> Reservation</h1>
+  <% else %>
+  <h1>You Have <%= user_reservation_count %> Reservations</h1>
+  <% end %>
+
+  <% @reservations.where('user_id' => current_user.id).each do |r| %>
+    <div class="reso_box">
+    <h2><%= @restaurants.find(r.restaurant_id).name %></h2>
+    <p>Date: <%= r.date %></p>
+    <p>Time: <%= r.time.strftime("%I:%M:%p") %></p>
+    <p>Party Size: <%= r.party_size %></p>
+    <button>
+    <%= link_to 'Cancel', "/reservations/#{r.id}", method: :delete %>
+    </button>
+    </div>
+  <% end %>
