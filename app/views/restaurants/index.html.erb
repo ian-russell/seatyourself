@@ -2,14 +2,15 @@
 <h1>Restaurants available to take reservations:</h1>
 
   <% @restaurants.select("cuisine_type").group("cuisine_type").each do |r| %>
-    <%= r.cuisine_type %>
+    <h2><%= r.cuisine_type %></h2>
+      <% @restaurants.where('cuisine_type' => r.cuisine_type).each do |restaurant| %>
+      <button>
+        <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
+      </button>
+      <% end %>
+
   <% end %>
 
-  <% @restaurants.each do |restaurant| %>
-    <button>
-      <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
-  </button>
-  <% end %>
 <% else %>
   <h1>Welcome to Seat Yourself</h1>
 <% end %>
