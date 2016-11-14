@@ -15,7 +15,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">>
-<div class="container">
+<div class="jumbotron">
 
 <div data-role="main" class="ui-content">
   <p class="userinfo">
@@ -31,13 +31,13 @@
           <li class="active">
           <li><%= link_to "My Reservations (#{user_reservation_count})", reservations_path(current_user) %></li>
           <li><%= link_to "Restaurants (#{restaurant_count})", restaurants_path %></li>
-          <li><%= link_to "Account Details", user_path(current_user) %></li>
-          <li> <%= link_to "Log Out", session_path("current_user"), :method => :delete %></li>
+          <li><%= link_to "Account Details (#{ current_user.email })", user_path(current_user) %></li>
+          <li><%= link_to "Log Out", session_path("current_user"), :method => :delete %></li>
 
         </ul>
       </div>
     </nav>
-      Signed in as <%= current_user.email %><br /><br />
+
 
     <% else %>
 
