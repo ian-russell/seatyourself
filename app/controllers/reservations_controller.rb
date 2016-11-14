@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-  before_action :load_restaurant, except: [:index, :destroy]
+  before_action :load_restaurant, except: [:index, :destroy, :update, :edit]
 
   def index
     @reservations = Reservation.all
@@ -15,6 +15,20 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
   end
+
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+   @reservation = Reservation.find(params[:id])
+
+   if @reservation.update_attributes(reservation_params)
+     redirect_to reservations_path
+   else
+     render 'edit'
+   end
+ end
 
   def create
     @reservation = @restaurant.reservations.build(reservation_params)
