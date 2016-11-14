@@ -40,11 +40,3 @@ Restaurant.create(
   phone_number: "416-444-4444",
   cuisine_type: "Canadian"
 )
-
-Reservation.create(
-  date: Date.new(2016, 11, 25),
-  time: "18:00:00",
-  party_size: 2,
-  user_id: 1,
-  restaurant_id: 1
-)
