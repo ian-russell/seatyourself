@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to new_session_path, notice: "Signed up!"
+      redirect_to new_session_path, alert: "Signed up! Please Log in:"
     else
       render "new"
     end
